@@ -1,0 +1,21 @@
+<%- include("../partials/header") %>
+<h1 style="text-align:center;">Reset Password</h1>
+<div class="row">
+	<div class="responsive-form">
+		<form action="/reset/<%= token %>" method="POST">
+			<div class="form-group">
+				<label for="password">Enter New Password</label>
+				<input type="password" name="password" placeholder="New Password" class="form-control" value="" autofocus>
+			</div>
+			<div class="form-group">
+				<label for="confirm">Confirm Password</label>
+				<input type="password" name="confirm" value="" placeholder="Confirm Password" class="form-control">
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary btn-block">Change Password</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<%- include("../partials/footer") %>

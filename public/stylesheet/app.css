@@ -1,0 +1,50 @@
+
+.thumbnail img{
+	width : 100%;
+}
+
+.thumbnail{
+	padding : 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+}
+.delete_form{
+	display : inline;
+}
+
+#user_image{
+    font-size:130px;
+}
+
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+body{
+	padding-top : 100px;
+}
+
+.checked {
+    color: orange;
+}
+
+.badge{
+
+	background-color: #cc5050;
+}
+
+.responsive-form{
+	width : 30%;
+	margin : 25px auto;
+}
+
+@media(max-width: 450px){
+	.responsive-form{
+		width : 80%;
+		margin : 25px auto;
+	}
+}

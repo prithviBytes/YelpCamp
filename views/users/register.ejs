@@ -1,0 +1,34 @@
+<%- include("../partials/header") %>
+<div class="row">
+	<h1 style="text-align : center">Sign Up</h1>
+	<div class="responsive-form">
+		<form action="/register" method="POST" autocomplete="off" >
+			<div class = "form-group">
+				<input class="form-control" type="text" name="firstname" placeholder="First Name">
+			</div>
+			<div class = "form-group">
+				<input class="form-control" type="text" name="lastname" placeholder="Last Name">
+			</div>
+			<div class = "form-group">
+				<input class="form-control" type="text" name="username" placeholder="username">
+			</div>
+			<div class = "form-group">
+				<input class="form-control" type="email" name="email" placeholder="Email ID">
+			</div>
+			<div class = "form-group">
+				<input class="form-control" type="text" name="avatar" placeholder="avatar url">
+			</div>
+			<div class="form-group">
+				<input type="tel" class="form-control" name="phone" placeholder="10 Digit Mobile number" pattern="[0-9]{10}">
+			</div>
+			<div class="form-group">
+			<input class="form-control" type="password" name="password" placeholder="password">
+			</div>
+			<div class="form-group">
+				<button class="btn btn-primary btn-block">Submit</button>
+			</div>
+			<a href="/adminRegister" class="pull-right">Register as Admin?</a>
+		</form>
+	</div>
+</div>
+<%- include("../partials/footer") %>

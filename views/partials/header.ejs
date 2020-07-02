@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Make site responsive on mobile/tablet -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>YelpCamp</title>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+<link rel="stylesheet" href="/stylesheet/app.css">
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            <a class="navbar-brand" href="/"><i class="fas fa-dove"></i>&nbsp;YelpCamp</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li class="<%= typeof page !== 'undefined' && page === 'campgrounds' ? 'active' : '' %>"><a href="/campgrounds">Home</a></li>
+          </ul>
+			<div class="navbar navbar-nav navbar-center hidden-xs hidden-sm">
+				<form class="navbar-form navbar-nav"  method="GET" action="/campgrounds" autocomplete="off">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search Campgrounds" name="search">
+					</div>
+					<button type="submit" class="btn btn-warning">Search</button>
+				</form>
+			</div>
+          <ul class="nav navbar-nav navbar-right">
+              <% if(!currentUser){ %>
+                  <li class="<%= typeof page !== 'undefined' && page === 'login' ? 'active' : '' %>"><a href="/login">Login
+					  &nbsp;<i class="fas fa-sign-in-alt hidden-xs"></i></a></li>
+                  <li class="<%= typeof page !== 'undefined' && page === 'register' ? 'active' : '' %>"><a href="/register">Sign Up&nbsp;<i class="fas fa-user-plus hidden-xs"></i></a></li>
+              <% } else { %>
+                  <li>
+					  <a href="/user/<%= currentUser._id %>">
+						  <% if(currentUser.avatar){ %>
+					  		<img class="img-circle hidden-xs" src="<%= currentUser.avatar %>" width="25" height="25">
+						  <% }else{ %>
+						  <i class="fas fa-user hidden-xs"></i>
+						  <% } %>
+						  &nbsp;Welcome <%= currentUser.username %>
+					  </a>
+			  	</li>
+                  <li><a href="/logout">Logout&nbsp;<i class="fas fa-sign-out-alt"></i></a></li>
+              <% } %>
+          </ul>
+        </div>
+    </div>
+</nav>
+	
+	<div class="container">
+		<% if(error && error.length > 0){ %>
+		<div class="alert alert-danger"><%= error %></div>
+		<% } %>
+		<% if( success && success.length > 0){ %>
+		<div class="alert alert-success"><%= success %></div>
+		<% } %>
+	</div>
+	<div class="container">
+
