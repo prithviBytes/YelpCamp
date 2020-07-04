@@ -1,4 +1,11 @@
 <%- include('../partials/header') %>
+<script>
+$(document).ready(function() {
+  $("#filter-button").click(function() {
+    $("#sort-form").toggle();
+  });
+});
+</script>
 	<header class="jumbotron">
 		<div class="container">
 			<h1><i class="fas fa-campground"></i>Welcome to YelpCamp</h1>
@@ -16,6 +23,47 @@
 			</div>
 		</div>
 	</header>
+<!-- SORTING THE CAMPGROUNDS -->
+<button type="button" id="filter-button" class="btn btn-info btn-sm">SORT<span>&nbsp;&nbsp;&nbsp;</span><i class="fas fa-sort"></i></button>
+<hr>
+<div class="row" id="sort-form">
+	<form action="/campgrounds" method="GET">
+		<h4 style="display:inline;">Order:   </h4>
+		<div class="radio-inline">
+			<label>
+				<input type="radio" id="descending" name="order" value="-1" checked>
+				Descending
+			</label>
+		</div>
+		<div class="radio-inline">
+			<label>
+				<input type="radio" id="ascending" name="order" value="1">
+				Ascending
+			</label>
+		</div><br>
+		<h4 style="display:inline;">Sort By:    </h4>
+		<div class="radio-inline">
+			<label>
+				<input type="radio" id="ascending" name="sortBy" value="rating" checked>
+				Ratings
+			</label>
+		</div>
+		<div class="radio-inline">
+			<label>
+				<input type="radio" id="ascending" name="sortBy" value="price">
+				Price
+			</label>
+		</div>
+		<div class="radio-inline">
+			<label>
+				<input type="radio" id="ascending" name="sortBy" value="createdAt">
+				Date
+			</label>
+		</div><br>
+		<button class="ui secondary button large">SORT</button>
+	</form>
+	<hr>
+</div>
 	<div class="row text-center" style="display:flex; flex-wrap:wrap;">
 		<% campgrounds.forEach(function(campground){ %>
 		<div class="col-md-3 col-sm-6">
@@ -24,7 +72,7 @@
 				<div class="caption">
 					<h4> <%= campground.name %></h4>
 					 <div>
-           				<span class="badge label-danger"><i class="fas fa-thumbs-up"></i> <%= campground.likes.length %></span>
+           				<span class="badge label-danger"><i class="heart icon"></i> <%= campground.likes.length %></span>
 					</div>
 					<% if (campground.rating !== 0) { %>
                     <span class="fa fa-star checked"></span>

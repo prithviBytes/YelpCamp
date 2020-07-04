@@ -1,4 +1,8 @@
-
+.like-button {
+    background:none!important;
+    border:none; 
+    padding:0!important;
+}
 .thumbnail img{
 	width : 100%;
 }
@@ -6,7 +10,14 @@
 .thumbnail{
 	padding : 0;
 }
-
+#sort-form {
+  padding: 15px;
+  background: #fff;
+  display: none;
+}
+#filter-button:hover span{
+	padding-left:5px;
+}
 .thumbnail .caption-full {
     padding: 9px;
 }
@@ -24,8 +35,17 @@
     transform: translatex(-50%);
 }
 
+/* .jumbotron{
+	background: rgba(0,0,0,0.7);
+    color: #caafaf;
+} */
+
 body{
 	padding-top : 100px;
+	/* background : url("https://images.unsplash.com/photo-1475694867812-f82b8696d610?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat; */
 }
 
 .checked {

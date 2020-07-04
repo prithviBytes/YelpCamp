@@ -13,33 +13,32 @@
 				<img class="responsive-image" src="<%= campground.image %>">
 				<div class="caption full">
 					<% if(campground.price == 0){ %>
-					<h4 class="pull-right">Free</h4>
+					<h3 class="pull-right">Free</h3>
 					<% }else{ %>
 					<h4 class="pull-right"><i class="fas fa-rupee-sign" style="font-size:17px;"></i>&nbsp;<%= campground.price %></h4>
 					<% } %>
 					<h4><a href="#"><%= campground.name %></a></h4>
-					<div class="pull-right">
-   						 <button type="button" class="btn btn-xs btn-primary" data-toggle="modal"data-target="#campgroundLikes">
-  					      <span>Total likes: <i class="fas fa-thumbs-up"></i> <%= campground.likes.length %></span>
-    					</button>
-					</div>
 					<div style="padding-bottom: 10px;">
 						<form action="/campgrounds/<%= campground._id %>/like" method="POST">
-							<div class="btn-group">
+							<div class="ui labeled button" tabindex="0">
 								<% if (currentUser && campground.likes.some(function (like) {
 									return like.equals(currentUser._id)
 								})) { %>
-									<button class="btn btn-sm btn-primary">
-										<i class="fas fa-thumbs-up"></i> Liked (<%= campground.likes.length %>)
-									</button>
-								<% } else { %>
-									<button class="btn btn-sm btn-secondary">
-										<i class="fas fa-thumbs-up"></i> Like (<%= campground.likes.length %>)
-									</button>
-								<% } %>
-								<button type="button" class="btn btn-sm btn-default" data-toggle="modal"
-										data-target="#campgroundLikes">See more details
+								<button class="like-button">
+									<a class="ui red button large" role="button">	 
+										<i class="heart icon"></i> Liked
+									</a>
 								</button>
+								<% } else { %>
+								<button class="like-button">
+									<a class="ui button large" role="button">	 
+										<i class="heart icon"></i> Like
+									</a>
+								</button>
+								<% } %>
+								<a class="ui basic red left pointing label" data-toggle="modal"	data-target="#campgroundLikes">
+								    <%= campground.likes.length %>
+ 								 </a>
 							</div>
 						</form>
 					</div>

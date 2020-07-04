@@ -36,8 +36,22 @@ router.get("/campgrounds",function( req, res){
 	var perPage = 8;
 	var pageQuery = parseInt(req.query.page);
 	var pageNumber = pageQuery ? pageQuery : 1;
+	//ascending decending
+	//ratings createdAt price
 	if(!req.query.search){
-		Campground.find({}).skip((pageNumber*perPage)-perPage).limit(perPage).exec(function(err,allCampgrounds){
+		var order = -1;
+		var sortBy = "rating";
+		if(req.query.order){
+			order = parseInt(req.query.order);
+		}
+		if(req.query.sortBy){
+			sortBy = req.query.sortBy;	
+		}
+		var sort;
+		sort={"rating":order};
+		if(sortBy==="price"){sort={"price":order}};
+		if(sortBy==="createdAt"){sort={"createdAt":order}};
+		Campground.find({}).sort(sort).skip((pageNumber*perPage)-perPage).limit(perPage).exec(function(err,allCampgrounds){
 			Campground.countDocuments().exec(function(err,count){
 				if(err){
 					req.flash("error","Something went wrong "+err);
@@ -47,7 +61,7 @@ router.get("/campgrounds",function( req, res){
 						campgrounds:allCampgrounds,
 						page : "campgrounds",
 						current: pageNumber,
-                        pages: Math.ceil(count / perPage)
+   						pages: Math.ceil(count / perPage)
 					});
 				}
 			})
@@ -169,7 +183,7 @@ router.post("/campgrounds/:id/like", middleware.isLoggedIn, function (req, res) 
     Campground.findById(req.params.id, function (err, foundCampground) {
         if (err) {
             req.flash("error","Error"+err);
-            return res.redirect("/campgrounds");
+            return res.redirect("/campgrounds/"+req.params.id);
         }
         // check if req.user._id exists in foundCampground.likes
         var foundUserLike = foundCampground.likes.some(function (like) {
@@ -186,8 +200,8 @@ router.post("/campgrounds/:id/like", middleware.isLoggedIn, function (req, res) 
 
         foundCampground.save(function (err) {
             if (err) {
-                console.log(err);
-                return res.redirect("/campgrounds");
+                req.flash("error",err.message);
+                return res.redirect("/campgrounds/"+req.params.id);
             }
             return res.redirect("/campgrounds/" + foundCampground._id);
         });

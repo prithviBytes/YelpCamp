@@ -39,7 +39,6 @@ router.post("/register",function(req,res){
 		passport.authenticate("local")(req , res, function(){
 			req.flash("success","Welcome "+user.username+"!");
 			res.redirect("/campgrounds");
-			console.log(user);
 		});
 	})
 });
@@ -66,7 +65,7 @@ router.get("/user/:id",function(req,res){
 	User.findById(req.params.id,function(err,foundUser){
 		if(err){
 			req.flash("error","Something Went Wrong"+err);
-			res.redirect("/campgrounds");
+			res.redirect("back");
 		}else{
 			Campground.find().where("author.id").equals(foundUser._id).exec(function(err,campgrounds){
 				if(err){
@@ -102,7 +101,7 @@ router.get("/user/:id/edit",middleware.checkProfileAuthorization,function(req,re
 router.put("/user/:id",middleware.checkProfileAuthorization,function(req,res){
 	User.findByIdAndUpdate(req.params.id,req.body.user,function(err,updatedUser){
 		if(err){
-			req.flash("Failed to update. Error: "+err);
+			req.flash("error","Failed to update. Error: "+err);
 			res.redirect("back");
 		}else{
 			req.flash("success","Succesfully Updated!!");
