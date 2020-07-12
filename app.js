@@ -26,8 +26,7 @@ app.use(require("express-session")({
 	resave : false,
 	saveUninitialized : false
 }));
-// mongodb://localhost:27017/yelp_camp
-mongoose.connect('mongodb+srv://prithvisuvarna56:Lionelronaldo@1@cluster0.t4mwf.mongodb.net/yelpcamp?retryWrites=true&w=majority',
+mongoose.connect(process.env.DATABASEURL,
 {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
