@@ -13,3 +13,4 @@ Will try to update the app frequently and make it better.
 Hope You Like It.<br>
 Cheers,<br>
 Prithviraj Suvarna
+Email: prithvisuvarna56@gmail.com
