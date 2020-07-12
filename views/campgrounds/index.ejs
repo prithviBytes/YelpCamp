@@ -24,6 +24,7 @@ $(document).ready(function() {
 		</div>
 	</header>
 <!-- SORTING THE CAMPGROUNDS -->
+<% if(campgrounds.length > 0){ %>
 <button type="button" id="filter-button" class="btn btn-info btn-sm">SORT<span>&nbsp;&nbsp;&nbsp;</span><i class="fas fa-sort"></i></button>
 <hr>
 <div class="row" id="sort-form">
@@ -64,6 +65,7 @@ $(document).ready(function() {
 	</form>
 	<hr>
 </div>
+<% } %>
 	<div class="row text-center" style="display:flex; flex-wrap:wrap;">
 		<% campgrounds.forEach(function(campground){ %>
 		<div class="col-md-3 col-sm-6">
