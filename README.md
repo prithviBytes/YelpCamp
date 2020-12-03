@@ -17,7 +17,7 @@ Clone this repository and then <br>
 <br>
 ``` node app.js ```
 
-## Pacakges 
+## Packages 
 <ul>
   <li>body-parser: A middleware that validates and parses the data from the client.</li>
   <li>cloudinary: A cloud service that offers solution to web-aplication images.</li>
