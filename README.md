@@ -37,7 +37,7 @@ Clone this repository and then <br>
 </ul>
 
 ## Database
-I have used MongoDB for stroing User Data, Campground info, etc.
+I have used MongoDB for storing User Data, Campground info, etc.
 
 ## Credits
 Credit of this project goes to <b>Colt Steele and his TAs</b>.
