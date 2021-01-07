@@ -36,6 +36,9 @@ Clone this repository and then <br>
   <li>passport-local-mongoose: Mongoose pulgin.</li>
 </ul>
 
+## Database
+I have used MongoDB for stroing User Data, Campground info, etc.
+
 ## Credits
 Credit of this project goes to <b>Colt Steele and his TAs</b>.
 I came across this project on one of Colt's Bootcamp on Web Development.<br>
